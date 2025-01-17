@@ -29,7 +29,7 @@ data:
         rotateCheckInterval:   "1h"          # 滚动切分的时间检测间隔，一般不需要设置。默认为1小时
 
     Jaeger:
-      address: "127.0.0.1:4317"
+      address: "192.168.0.2:4317"
 
     test: "You get the config embedded"
 

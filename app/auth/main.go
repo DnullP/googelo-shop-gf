@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
+	"googelo-shop-gf/app/auth/internal/controller/auth"
 
+	"github.com/gogf/gf/contrib/rpc/grpcx/v2"
 	"github.com/gogf/gf/contrib/trace/otlpgrpc/v2"
 	"github.com/gogf/gf/v2/frame/g"
-	"github.com/gogf/gf/v2/net/ghttp"
 	"github.com/gogf/gf/v2/os/gctx"
 )
 
@@ -31,9 +32,7 @@ func main() {
 	}
 	defer shutdown(ctx)
 
-	s := g.Server()
-	s.BindHandler("/", func(r *ghttp.Request) {
-		r.Response.Write(test)
-	})
+	s := grpcx.Server.New()
+	auth.Register(s)
 	s.Run()
 }

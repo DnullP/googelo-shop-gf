@@ -9,5 +9,5 @@ spec:
     app: auth-app # 选择符合的 Pod 标签
   ports:
     - protocol: TCP
-      port: 8000  # 对外暴露的端口
-      targetPort: 8000  # Pod 内部的端口
+      port: 8100  # 对外暴露的端口
+      targetPort: 8100  # Pod 内部的端口
