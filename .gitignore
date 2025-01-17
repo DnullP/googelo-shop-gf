@@ -9,6 +9,7 @@
 bin/
 **/.DS_Store
 gf
+/app/**/log/*
 main
 main.exe
 output/
