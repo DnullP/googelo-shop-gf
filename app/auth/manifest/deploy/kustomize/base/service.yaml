@@ -1,12 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: template-mono-app
+  name: auth-app
+  namespace: shop
 spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 8000
+  type: ClusterIP  # 使用 ClusterIP 类型的 Service（默认类型）
   selector:
-    app: template-mono-app
-
+    app: auth-app # 选择符合的 Pod 标签
+  ports:
+    - protocol: TCP
+      port: 8000  # 对外暴露的端口
+      targetPort: 8000  # Pod 内部的端口

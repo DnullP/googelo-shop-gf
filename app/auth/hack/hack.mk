@@ -40,7 +40,7 @@ ifneq (, $(shell git status --porcelain 2>/dev/null))
 endif
 	$(eval _TAG  = $(if ${TAG},  ${TAG}, $(_TAG)))
 	$(eval _PUSH = $(if ${PUSH}, ${PUSH}, ))
-	@gf docker ${_PUSH} -tn $(DOCKER_NAME):${_TAG};
+	@gf docker ${_PUSH} -tn $(DOCKER_NAME):latest;
 
 
 # Build docker image and automatically push to docker repo.

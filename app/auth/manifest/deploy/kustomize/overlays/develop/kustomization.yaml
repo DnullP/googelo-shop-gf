@@ -5,10 +5,9 @@ resources:
 - ../../base
 - configmap.yaml
 
-patchesStrategicMerge:
-- deployment.yaml
+patches:
+  - path: deployment.yaml
 
-namespace: default
 
 
 

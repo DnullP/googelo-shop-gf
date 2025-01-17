@@ -1,7 +1,7 @@
 ROOT_DIR    = $(shell pwd)
-NAMESPACE   = "default"
-DEPLOY_NAME = "template-mono-app"
-DOCKER_NAME = "template-mono-app"
+NAMESPACE   = "shop"
+DEPLOY_NAME = "auth-app"
+DOCKER_NAME = "auth-app"
 
 include ./hack/hack-cli.mk
 include ./hack/hack.mk

@@ -15,7 +15,6 @@ require (
 	github.com/go-logr/logr v1.4.2 // indirect
 	github.com/go-logr/stdr v1.2.2 // indirect
 	github.com/go-sql-driver/mysql v1.6.0 // indirect
-	github.com/gogf/gf v1.16.9
 	github.com/gogf/gf/contrib/registry/file/v2 v2.8.3 // indirect
 	github.com/gogf/gf/contrib/rpc/grpcx/v2 v2.8.3 // indirect
 	github.com/gogf/gf/contrib/trace/otlpgrpc/v2 v2.8.3 // indirect

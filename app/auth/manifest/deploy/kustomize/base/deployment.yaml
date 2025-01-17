@@ -1,21 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: template-mono-app
+  name: auth-app
+  namespace: shop
   labels:
-    app: template-mono-app
+    app: auth-app
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: template-mono-app
+      app: auth-app
   template:
     metadata:
       labels:
-        app: template-mono-app
+        app: auth-app
     spec:
       containers:
-        - name : main
-          image: template-mono-app
+        - name : auth-app-container
+          image: ghcr.io/dnullp/googole-shop-gf/auth-app:latest
           imagePullPolicy: Always
+          volumeMounts:
+          - name: config-volume
+            mountPath: /app/config.yml
+            subPath: config.yaml 
 

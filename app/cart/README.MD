@@ -1,4 +1,3 @@
 # GoFrame Template For SingleRepo
 
-Quick Start: 
-- https://goframe.org/quick
+This is the cart service.
