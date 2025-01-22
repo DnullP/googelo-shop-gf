@@ -7,13 +7,13 @@ data:
   config.yaml: |
     grpc:
       name:             "auth-service"  # 服务名称
-      address:          ":8100" # 自定义服务监听地址
+      address:          ":8120" # 自定义服务监听地址
       logPath:          "./log" # 日志存储目录路径
       logStdout:        true    # 日志是否输出到终端
       errorLogEnabled:  true    # 是否开启错误日志记录
       accessLogEnabled: true    # 是否开启访问日志记录
       errorStack:       true    # 当产生错误时，是否记录错误堆栈
-
+    
       # 日志扩展配置(参数日志组件配置)
       logger:
         path:                  "/var/log/"   # 日志文件路径。默认为空，表示关闭，仅输出到终端
@@ -27,13 +27,23 @@ data:
         rotateBackupExpire:    0             # 按照切分的文件有效期清理切分文件，当滚动切分特性开启时有效。默认为0，表示不备份，切分则删除
         rotateBackupCompress:  0             # 滚动切分文件的压缩比（0-9）。默认为0，表示不压缩
         rotateCheckInterval:   "1h"          # 滚动切分的时间检测间隔，一般不需要设置。默认为1小时
-
+    
+    # 接入Jaeger 
     Jaeger:
-      address: "192.168.0.2:4317"
-
+      address: "127.0.0.1:4317"
+    
+    # 接入PostgreSQL
+    database:
+      default:
+        link: "pgsql:postgres:91act31go@tcp(127.0.0.1:52345)/test"
+    
+    redis:
+      address: "redis-service.shop.svc.cluster.local"
+    
     test: "You get the config embedded"
-
-    # Http test
+    
+    # Http config
     server:
-      address:    ":80"
-      serverRoot: "/"
+        address:    ":80"
+        serverRoot: "/"
+    
