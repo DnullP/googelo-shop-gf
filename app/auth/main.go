@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"googelo-shop-gf/app/auth/internal/controller/auth"
 	"time"
@@ -57,13 +58,17 @@ func main() {
 	s.Run()
 }
 
-func ExampleCache_SetAdapter() {
+func ExampleCache_SetAdapter(ctx context.Context) {
+
+	address, err := g.Cfg().Get(ctx, "redis.address")
+	if err != nil {
+		g.Log().Fatal(ctx, err)
+	}
+
 	var (
-		err         error
-		ctx         = gctx.New()
 		cache       = gcache.New()
 		redisConfig = &gredis.Config{
-			Address: "redis-service.shop.svc.cluster.local",
+			Address: address.String(),
 			Db:      9,
 		}
 		cacheKey   = `key`

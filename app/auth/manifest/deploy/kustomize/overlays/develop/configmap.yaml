@@ -30,15 +30,15 @@ data:
     
     # 接入Jaeger 
     Jaeger:
-      address: "127.0.0.1:4317"
+      address: "192.168.0.2:4317"
     
     # 接入PostgreSQL
     database:
       default:
-        link: "pgsql:postgres:91act31go@tcp(127.0.0.1:52345)/test"
+        link: "pgsql:postgres:91act31go@tcp(192.168.0.2:42345)/auth"
     
     redis:
-      address: "redis-service.shop.svc.cluster.local"
+      address: "redis-service.shop.svc.cluster.local:6379"
     
     test: "You get the config embedded"
     
