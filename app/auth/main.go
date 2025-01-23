@@ -49,7 +49,7 @@ func main() {
 	}
 
 	// Redis test
-	ExampleCache_SetAdapter()
+	ExampleCache_SetAdapter(ctx)
 
 	g.Log().Info(ctx)
 
