@@ -50,8 +50,11 @@ func main() {
 
 	// Redis test
 	ExampleCache_SetAdapter(ctx)
-
 	g.Log().Info(ctx)
+
+	for {
+		g.Log().Info(ctx, "This is the log from auth app")
+	}
 
 	s := grpcx.Server.New()
 	auth.Register(s)
