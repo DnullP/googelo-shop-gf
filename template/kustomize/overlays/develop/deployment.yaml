@@ -1,0 +1,21 @@
+# 这个文件中的内容会覆写修改base中的配置, 将configmap的配置作为应用配置
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-app
+  namespace: shop
+  labels:
+    app: auth-app
+spec:
+  template:
+    spec:
+      containers:
+        - name : auth-app-container
+        - volumeMounts:
+          - name: config-volume
+            mountPath: /app/config.yml
+            subPath: config.yaml  # 只挂载ConfigMap中的config.yaml文件
+      volumes:
+      - name: config-volume
+        configMap:
+          name: auth-app-configmap  # ConfigMap的名字

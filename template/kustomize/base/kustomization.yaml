@@ -1,0 +1,7 @@
+# 这个文件将deployment和service合并, 然后会将合并的配置使用overlays进行覆写修改
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+- deployment.yaml
+- service.yaml
+

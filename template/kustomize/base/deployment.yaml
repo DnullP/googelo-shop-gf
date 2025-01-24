@@ -1,0 +1,27 @@
+# 这个文件是基本的部署配置
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-app # 应用名称为<module-app>
+  namespace: shop # 命名空间为shop
+  labels:
+    app: auth-app # 标签同应用名称
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth-app # 同上
+  template:
+    metadata:
+      labels:
+        app: auth-app # 同上
+    spec:
+      containers:
+        - name : auth-app-container # 容器的命名 需要能够区分服务
+          image: ghcr.io/dnullp/googole-shop-gf/auth-app:latest # 镜像tag使用latest以自动应用版本
+          imagePullPolicy: Always
+          volumeMounts:
+          - name: config-volume # config-volume在overlays中定义
+            mountPath: /app/config.yml
+            subPath: config.yaml 
+

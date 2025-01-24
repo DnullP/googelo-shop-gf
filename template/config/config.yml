@@ -1,0 +1,42 @@
+# 这是一份应用配置模板 你可以将中间件修改为自己的本地环境 用于本地自测
+grpc:
+  name:             "auth-service"  # 服务名称
+  address:          ":8120" # 自定义服务监听地址
+  logPath:          "./log" # 日志存储目录路径
+  logStdout:        true    # 日志是否输出到终端
+  errorLogEnabled:  true    # 是否开启错误日志记录
+  accessLogEnabled: true    # 是否开启访问日志记录
+  errorStack:       true    # 当产生错误时，是否记录错误堆栈
+
+  # 日志扩展配置(参数日志组件配置)
+  logger:
+    path:                  "/var/log/"   # 日志文件路径。默认为空，表示关闭，仅输出到终端
+    file:                  "{Y-m-d}.log" # 日志文件格式。默认为"{Y-m-d}.log"
+    prefix:                ""            # 日志内容输出前缀。默认为空
+    level:                 "all"         # 日志输出级别
+    stdout:                true          # 日志是否同时输出到终端。默认true
+    rotateSize:            0             # 按照日志文件大小对文件进行滚动切分。默认为0，表示关闭滚动切分特性
+    rotateExpire:          0             # 按照日志文件时间间隔对文件滚动切分。默认为0，表示关闭滚动切分特性
+    rotateBackupLimit:     0             # 按照切分的文件数量清理切分文件，当滚动切分特性开启时有效。默认为0，表示不备份，切分则删除
+    rotateBackupExpire:    0             # 按照切分的文件有效期清理切分文件，当滚动切分特性开启时有效。默认为0，表示不备份，切分则删除
+    rotateBackupCompress:  0             # 滚动切分文件的压缩比（0-9）。默认为0，表示不压缩
+    rotateCheckInterval:   "1h"          # 滚动切分的时间检测间隔，一般不需要设置。默认为1小时
+
+# 接入Jaeger 
+Jaeger:
+  address: "127.0.0.1:4317"
+
+# 接入PostgreSQL
+database:
+  default:
+    link: "pgsql:postgres:91act31go@tcp(127.0.0.1:5432)/test"
+
+redis:
+  address: "redis-service.shop.svc.cluster.local"
+
+test: "You get the config embedded"
+
+# Http config
+server:
+    address:    ":80"
+    serverRoot: "/"
