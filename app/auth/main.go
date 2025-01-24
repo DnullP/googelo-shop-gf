@@ -54,6 +54,7 @@ func main() {
 
 	for {
 		g.Log().Info(ctx, "This is the log from auth app")
+		time.Sleep(1 * time.Second)
 	}
 
 	s := grpcx.Server.New()
