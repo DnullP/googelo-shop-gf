@@ -8,6 +8,7 @@ import (
 
 	_ "github.com/gogf/gf/contrib/drivers/pgsql/v2"
 	_ "github.com/gogf/gf/contrib/nosql/redis/v2"
+	"github.com/gogf/gf/contrib/registry/etcd/v2"
 	"github.com/gogf/gf/contrib/rpc/grpcx/v2"
 	"github.com/gogf/gf/contrib/trace/otlpgrpc/v2"
 	"github.com/gogf/gf/v2/database/gredis"
@@ -23,6 +24,13 @@ func main() {
 	if err != nil {
 	}
 	fmt.Println(test)
+
+	// 服务发现
+	etcdAddress, err := g.Cfg().Get(ctx, "etcd.address")
+	if err != nil {
+		g.Log().Fatal(ctx, "No etcd configuration")
+	}
+	grpcx.Resolver.Register(etcd.New(etcdAddress.String()))
 
 	// 链路追踪
 	serviceName := "auth-service"
@@ -51,11 +59,6 @@ func main() {
 	// Redis test
 	ExampleCache_SetAdapter(ctx)
 	g.Log().Info(ctx)
-
-	for {
-		g.Log().Info(ctx, "This is the log from auth app")
-		time.Sleep(1 * time.Second)
-	}
 
 	s := grpcx.Server.New()
 	auth.Register(s)

@@ -38,7 +38,10 @@ data:
         link: "pgsql:postgres:91act31go@tcp(192.168.0.2:42345)/auth"
     
     redis:
-      address: "redis-service.shop.svc.cluster.local:6379"
+      address: "redis-service.shop:6379"
+
+    etcd:
+      address: "etcd-client.shop:2379"
     
     test: "You get the config embedded"
     
